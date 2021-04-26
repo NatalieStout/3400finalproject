@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <?= template_header('BOLG Post') ?>
-<?= template_nav() ?>
+<?= template_nav($post) ?>
 
 <!-- START PAGE CONTENT -->
 <h1 class="title"><?= $post['title'] ?></h1>

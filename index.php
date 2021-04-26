@@ -33,40 +33,30 @@ $blog_post = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endif; ?>
 
-        <h1 class="title">Blog Posts</h1>
-        <p>View blog posts below.</p>
+        <h1 class="title">Welcome to the Blog!</h1>
+        <p>View our most recent blog entries below.</p>
+
         <div class="container">
 
+        <?php foreach ($blog_post as $post): ?>
+        <div class="card m-5 p-5" style="width: 100%;">
+            <div class="row no-gutters">
+                <div class="card-body">
+                    <h2 class="card-title"><strong><?= $post['title'] ?></strong></h2>
+                    <h5 class="card-title"><small class="text-muted">By <?= $post['author_name'] ?></small></h5>
+                    
+                </div>
 
+                <div class="content article-body">
+                <p><?= substr($post['content'], 0, 100) ?>...
+                <span class=""><a href="blog-post.php?id= <?=$post['id']?>">Learn More.</a></span>
+                </p>
+                </div>
+                
+            </div>
+            </div>
+            <?php endforeach; ?>
 
-            <table class="table is-bordered is-hoverable">
-                <thead>
-                    <td>#</td>
-                    <td>Author</td>
-                    <td>Title</td>
-                    <td>Description</td>
-                </thead>
-                <tbody>
-                    <?php foreach ($blog_post as $post): ?>
-                        <tr>
-                            <td>
-                                <?= $post['id'] ?>
-                            </td>
-                            <td>
-                                <?= $post['author_name'] ?>
-                            </td>
-                            <td>
-                                <?= $post['title'] ?>
-                            </td>
-                            <td>
-                                <?= $post['content'] ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
     <!-- END PAGE CONTENT -->
 
